@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:player/config/theme.dart';
-import 'package:player/pages/song_page.dart';
+import 'package:player/pages/play_song.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: darkTheme,
-      home: const SongPage(),
+      home: const PlaySong(),
     );
   }
 }
