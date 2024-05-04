@@ -3,28 +3,42 @@ import 'package:flutter_svg/svg.dart';
 import 'package:player/config/colors.dart';
 
 class SongTile extends StatelessWidget {
-  const SongTile({super.key});
+  final String songName;
+  final VoidCallback onPress;
+  const SongTile({
+    super.key,
+    required this.songName,
+    required this.onPress,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: divColor.withOpacity(0.7),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          SvgPicture.asset('assets/icons/play.svg'),
-          const SizedBox(
-            width: 10,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: InkWell(
+        onTap: () => onPress(),
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: divColor.withOpacity(0.7),
+            borderRadius: BorderRadius.circular(10),
           ),
-          Text(
-            'Chalo bulawa aya hai mata',
-            style: Theme.of(context).textTheme.bodyMedium,
+          child: Row(
+            children: [
+              SvgPicture.asset('assets/icons/play.svg'),
+              const SizedBox(
+                width: 10,
+              ),
+              Flexible(
+                child: Text(
+                  songName,
+                  maxLines: 1,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
